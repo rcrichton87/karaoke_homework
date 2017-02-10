@@ -22,4 +22,6 @@ class TestGuest < MiniTest::Test
     assert_equal(200, @guest1.money)
   end
 
+
+
 end

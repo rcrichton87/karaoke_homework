@@ -38,4 +38,8 @@ end
     assert_equal([@song1], @room1.playlist)
   end
 
+  def test_room_max_capacity
+    assert_equal(4, @room1.max_capacity)
+  end
+
 end

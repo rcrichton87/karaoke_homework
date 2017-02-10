@@ -1,10 +1,11 @@
 class Room
 
-  attr_reader :guests, :playlist
+  attr_reader :guests, :playlist, :max_capacity
 
   def initialize
     @guests = []
     @playlist = []
+    @max_capacity = 4
   end
 
   def add_guest(guest)
