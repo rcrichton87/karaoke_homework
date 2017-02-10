@@ -41,21 +41,28 @@ class Runner
     end
   end
 
-finished_adding_songs = false
+  finished_adding_songs = false
 
-while finished_adding_songs == false
-    puts "Select the number of a song to add it to the playlist, 0 to finish:"
+  while finished_adding_songs == false
+    puts "Select the number of a song to add it to the playlist, or anything else to finish:"
     song_library.each_with_index do |song, index|
       puts "#{index + 1} - #{song.title}"
     end
     song_number = gets.chomp.to_i
-    if song_number == 0
-      finished_adding_guests = true
-    else
     song_index = song_number - 1
-    room.add_song(song_index)
+    if song_number == 0
+      finished_adding_songs = true
+    elsif song_library[song_index] != nil      
+      room.add_song(song_library[song_index])
+    else
+      puts "Not found, please enter another number"
+    end
   end
-end
+
+  while room.playlist.length > 0
+    current_song = room.playlist.shift
+    puts "Now playing #{current_song.title}"
+  end
 
 
 end
