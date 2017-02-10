@@ -11,4 +11,12 @@ class Room
     @guests.push(guest)
   end
 
+  def remove_guest(name_to_remove)
+    @guests.each do |guest|
+      if guest.name == name_to_remove
+        @guests.delete(guest)
+      end
+    end
+  end
+
 end
