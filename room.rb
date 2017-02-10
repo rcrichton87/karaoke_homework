@@ -7,4 +7,8 @@ class Room
     @playlist = []
   end
 
+  def add_guest(guest)
+    @guests.push(guest)
+  end
+
 end
