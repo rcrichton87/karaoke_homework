@@ -8,9 +8,16 @@ class TestRoom < MiniTest::Test
 
 def setup
   @room1 = Room.new()
-  @guest1 = Guest.new("Ross", @song1)
-  @guest2 = Guest.new("David", @song1)
+  @guest1 = Guest.new("Ross", @song4)
+  @guest2 = Guest.new("David", @song5)
+  @guest3 = Guest.new("Cara", @song2)
+  @guest4 = Guest.new("Paul", @song1)
+  @guest5 = Guest.new("Mike", @song3)
   @song1 = Song.new("Bohemian Rhapsody")
+  @song2 = Song.new("Livin' on a Prayer")
+  @song3 = Song.new("Rebel Yell")
+  @song4 = Song.new("London Calling")
+  @song5 = Song.new("Common People")
 end
 
   def test_room_starts_without_guests
@@ -40,6 +47,17 @@ end
 
   def test_room_max_capacity
     assert_equal(4, @room1.max_capacity)
+  end
+
+  def test_adding_to_room_at_max_capacity
+    @room1.add_guest(@guest1)
+    @room1.add_guest(@guest2)
+    @room1.add_guest(@guest3)
+    @room1.add_guest(@guest4)
+    @room1.add_guest(@guest5)
+    expected = [@guest1, @guest2, @guest3, @guest4]
+    actual = @room1.guests
+    assert_equal(expected, actual)
   end
 
 end

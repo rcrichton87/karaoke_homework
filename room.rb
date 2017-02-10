@@ -9,7 +9,12 @@ class Room
   end
 
   def add_guest(guest)
+
+  if @guests.length >= @max_capacity
+    puts "No more room for guests!"
+  else
     @guests.push(guest)
+  end
   end
 
   def remove_guest(name_to_remove)
