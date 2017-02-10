@@ -73,11 +73,11 @@ end
     assert_equal(expected, actual)
   end
 
-  def test_increase_tab
-    @room1.increase_tab(15)
-    expected = 15
-    actual = @room1.bar.tab
-    assert_equal(expected, actual)
+ 
+
+  def test_order_drinks
+    
   end
+
 
 end

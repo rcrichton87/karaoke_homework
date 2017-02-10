@@ -41,8 +41,4 @@ class Room
     return total_money
   end
 
-  def increase_tab(amount)
-    @bar.tab += amount
-  end
-
 end

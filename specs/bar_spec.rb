@@ -31,4 +31,11 @@ class TestBar < MiniTest::Test
     assert_equal(expected, actual)
   end
 
+  def test_increase_tab
+    @bar.increase_tab(15)
+    expected = 15
+    actual = @bar.tab
+    assert_equal(expected, actual)
+  end
+
 end

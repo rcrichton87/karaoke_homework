@@ -21,4 +21,10 @@ class Bar
     ]
   end
 
+
+  def increase_tab(amount)
+    @tab += amount
+  end
+
+
 end
