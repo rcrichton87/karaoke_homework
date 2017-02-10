@@ -8,6 +8,7 @@ class TestGuest < MiniTest::Test
   def setup
     @song1 = Song.new("Bohemian Rhapsody")
     @guest1 = Guest.new("Ross", @song1)
+    @song2 = Song.new("Livin' on a Prayer")
   end
 
   def test_guest_has_name
@@ -28,6 +29,10 @@ class TestGuest < MiniTest::Test
     assert_equal(expected, actual)
   end
 
-
+  def test_favourite_song__not_present
+    expected = nil
+    actual = @guest1.favourite_song?(@song2)
+    assert_equal(expected, actual)
+  end
 
 end
