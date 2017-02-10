@@ -22,7 +22,7 @@ attr_reader :song_library, :room
   def check_buy_drinks
     finished_buying_drinks = false
     while finished_buying_drinks == false
-      puts "Your current tab is #{@room.bar.tab}."
+      puts "Your current tab is #{@room.bar.tab}, your group has #{@room.guest_total_money}."
       puts "Do you want to buy drinks? y/n"
       input = gets.chomp
       if input == "n"
@@ -95,11 +95,20 @@ attr_reader :song_library, :room
       check_buy_drinks
     end
   end
+
+  def leave
+    final_tab = @room.bar.tab.to_f
+    each_guest_pays = final_tab / @room.guests.length
+    puts "Thanks for visiting, your tab is #{final_tab}, each person pays #{each_guest_pays.round(2)}!"
+  end
+
 end
   
+
 
 karaoke_bar = Runner.new()
 karaoke_bar.get_guests
 karaoke_bar.get_songs
 karaoke_bar.check_buy_drinks
 karaoke_bar.go_through_playlist
+karaoke_bar.leave
