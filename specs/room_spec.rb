@@ -79,5 +79,10 @@ end
     assert_equal(5, @room1.bar.tab)
   end
 
+  def test_order_drinks__cant_afford_it
+    @room1.order_drinks("Beer")
+    assert_equal(0, @room1.bar.tab)
+  end
+
 
 end
