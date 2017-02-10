@@ -6,15 +6,16 @@ class Room
     @guests = []
     @playlist = []
     @max_capacity = 4
+    @entry_fee = 20
   end
 
   def add_guest(guest)
-
-  if @guests.length >= @max_capacity
-    puts "No more room for guests!"
-  else
-    @guests.push(guest)
-  end
+    if @guests.length >= @max_capacity
+      puts "No more room for guests!"
+    else
+      guest.money -= @entry_fee
+      @guests.push(guest)
+    end
   end
 
   def remove_guest(name_to_remove)

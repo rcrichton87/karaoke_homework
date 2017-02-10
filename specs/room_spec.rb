@@ -60,4 +60,9 @@ end
     assert_equal(expected, actual)
   end
 
+  def test_charge_entry_fee
+    @room1.add_guest(@guest1)
+    assert_equal(180, @guest1.money)
+  end
+
 end
