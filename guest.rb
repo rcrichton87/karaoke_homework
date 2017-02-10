@@ -9,4 +9,10 @@ class Guest
     @money = 200
   end
 
+  def favourite_song?(current_song)    
+    if current_song = @favourite_song
+      return "#{@name}: Woohoo!"
+    end
+  end
+
 end

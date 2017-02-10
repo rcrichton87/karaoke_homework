@@ -62,6 +62,7 @@ class Runner
   while room.playlist.length > 0
     current_song = room.playlist.shift
     puts "Now playing #{current_song.title}"
+    sleep(1)
   end
 
 

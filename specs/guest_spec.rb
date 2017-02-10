@@ -22,6 +22,12 @@ class TestGuest < MiniTest::Test
     assert_equal(200, @guest1.money)
   end
 
+  def test_favourite_song?
+    expected = "Ross: Woohoo!"
+    actual = @guest1.favourite_song?(@song1)
+    assert_equal(expected, actual)
+  end
+
 
 
 end
