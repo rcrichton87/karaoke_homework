@@ -70,6 +70,14 @@ end
     @room1.add_guest(@guest2)
     expected = 360
     actual = @room1.guest_total_money
+    assert_equal(expected, actual)
+  end
+
+  def test_increase_tab
+    @room1.increase_tab(15)
+    expected = 15
+    actual = @room1.bar.tab
+    assert_equal(expected, actual)
   end
 
 end

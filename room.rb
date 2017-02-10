@@ -1,12 +1,15 @@
+require_relative('./bar.rb')
+
 class Room
 
-  attr_reader :guests, :playlist, :max_capacity
+  attr_reader :guests, :playlist, :max_capacity, :bar
 
   def initialize
     @guests = []
     @playlist = []
     @max_capacity = 4
     @entry_fee = 20
+    @bar = Bar.new
   end
 
   def add_guest(guest)
@@ -36,6 +39,10 @@ class Room
       total_money += guest.money
     end
     return total_money
+  end
+
+  def increase_tab(amount)
+    @bar.tab += amount
   end
 
 end
