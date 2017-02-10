@@ -12,4 +12,23 @@ class TestBar < MiniTest::Test
     assert_equal(0, @bar.tab)
   end
 
+  def test_drinks
+    expected = [
+      {
+        name: "Beer",
+        price: 5
+      },
+      {
+        name: "Wine",
+        price: 15
+      },
+      {
+        name: "Pan-galactic Gargle Blaster",
+        price: 150
+      }
+    ]
+    actual = @bar.drinks
+    assert_equal(expected, actual)
+  end
+
 end
