@@ -19,6 +19,29 @@ attr_reader :song_library, :room
     @room = Room.new()
   end
   
+  def check_buy_drinks
+    finished_buying_drinks = false
+    while finished_buying_drinks == false
+      puts "Your current tab is #{@room.bar.tab}."
+      puts "Do you want to buy drinks? y/n"
+      input = gets.chomp
+      if input == "n"
+        return
+      elsif input == "y"
+        puts "Select the number of a drink to order:"
+        @room.bar.drinks.each_with_index do |drink, index|
+          puts "#{index + 1}. #{drink[:name]} - #{drink[:price]}"
+        end
+        input_number = gets.chomp.to_i
+        input_index = input_number - 1
+        drink = @room.bar.drinks[input_index]
+        @room.order_drinks(drink[:name])
+      else
+        puts "Please input 'y' for yes or 'n' for no."
+      end
+    end
+  end
+
   def get_guests
     finished_adding_guests = false
     while finished_adding_guests == false
@@ -69,6 +92,7 @@ attr_reader :song_library, :room
         puts "#{guest.name}: Woohoo!"
       end
       sleep(1)
+      check_buy_drinks
     end
   end
 end
@@ -77,4 +101,5 @@ end
 karaoke_bar = Runner.new()
 karaoke_bar.get_guests
 karaoke_bar.get_songs
+karaoke_bar.check_buy_drinks
 karaoke_bar.go_through_playlist

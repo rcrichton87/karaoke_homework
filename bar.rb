@@ -16,7 +16,7 @@ class Bar
       },
       {
         name: "Pan-galactic Gargle Blaster",
-        price: 150
+        price: 200
       }
     ]
   end
