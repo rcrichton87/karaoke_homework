@@ -24,13 +24,13 @@ class TestGuest < MiniTest::Test
   end
 
   def test_favourite_song?
-    expected = "Ross: Woohoo!"
+    expected = true
     actual = @guest1.favourite_song?(@song1)
     assert_equal(expected, actual)
   end
 
   def test_favourite_song__not_present
-    expected = nil
+    expected = false
     actual = @guest1.favourite_song?(@song2)
     assert_equal(expected, actual)
   end

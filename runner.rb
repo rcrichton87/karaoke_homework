@@ -61,14 +61,17 @@ attr_reader :song_library, :room
     while room.playlist.length > 0
       current_song = room.playlist.shift
       puts "Now playing #{current_song.title}"
-      room.guests.each do |guest|
-        puts guest.favourite_song?(current_song)
+      guests_who_like_song = room.guests.find_all do |guest|
+        guest.favourite_song?(current_song)
+      end
+      guests_who_like_song.each do |guest|
+        puts "#{guest.name}: Woohoo!"
       end
       sleep(1)
     end
   end
-
 end
+  
 
 karaoke_bar = Runner.new()
 karaoke_bar.get_guests
