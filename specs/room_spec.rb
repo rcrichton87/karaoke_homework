@@ -13,4 +13,9 @@ end
     assert_equal(0, room_guests.length)
   end
 
+  def test_room_playlist_starts_empty
+    room_playlist = @room1.playlist
+    assert_equal(0, room_playlist.length)
+  end
+
 end
