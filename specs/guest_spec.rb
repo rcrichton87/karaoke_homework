@@ -18,4 +18,8 @@ class TestGuest < MiniTest::Test
     assert_equal(@song1, @guest1.favourite_song)
   end
 
+  def test_guest_has_money
+    assert_equal(200, @guest1.money)
+  end
+
 end
