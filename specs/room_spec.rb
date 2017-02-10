@@ -73,10 +73,10 @@ end
     assert_equal(expected, actual)
   end
 
- 
-
   def test_order_drinks
-    
+    @room1.add_guest(@guest1)
+    @room1.order_drinks("Beer")
+    assert_equal(5, @room1.bar.tab)
   end
 
 

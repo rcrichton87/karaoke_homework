@@ -26,5 +26,6 @@ class Bar
     @tab += amount
   end
 
+  
 
 end

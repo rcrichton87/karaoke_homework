@@ -41,4 +41,11 @@ class Room
     return total_money
   end
 
+  def order_drinks(search_name)
+    found_drink = @bar.drinks.find do |drink|
+      drink[:name] == search_name
+    end
+    @bar.tab += found_drink[:price]
+  end
+
 end
