@@ -19,4 +19,8 @@ class Room
     end
   end
 
+  def add_song(song)
+    @playlist.push(song)
+  end
+
 end
