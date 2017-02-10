@@ -65,4 +65,11 @@ end
     assert_equal(180, @guest1.money)
   end
 
+  def test_guest_total_money
+    @room1.add_guest(@guest1)
+    @room1.add_guest(@guest2)
+    expected = 360
+    actual = @room1.guest_total_money
+  end
+
 end

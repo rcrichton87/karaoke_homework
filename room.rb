@@ -30,4 +30,12 @@ class Room
     @playlist.push(song)
   end
 
+  def guest_total_money
+    total_money = 0
+    @guests.each do |guest|
+      total_money += guest.money
+    end
+    return total_money
+  end
+
 end
