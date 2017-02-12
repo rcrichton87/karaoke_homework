@@ -24,7 +24,7 @@ attr_reader :song_library, :room
     while finished_buying_drinks == false
       puts "Your current tab is #{@room.bar.tab}, your group has #{@room.guest_total_money}."
       puts "Do you want to buy drinks? y/n"
-      input = gets.chomp
+      input = gets.chomp.downcase
       if input == "n"
         return
       elsif input == "y"
@@ -36,6 +36,32 @@ attr_reader :song_library, :room
         input_index = input_number - 1
         drink = @room.bar.drinks[input_index]
         @room.order_drinks(drink[:name])
+      else
+        puts "Please input 'y' for yes or 'n' for no."
+      end
+    end
+  end
+
+  def check_guests_leaving
+    finished_checking_guests_leaving = false
+    while finished_checking_guests_leaving == false
+      puts "Is anyone checking out from the room? y/n"
+      input = gets.chomp.downcase
+      if input == "n"
+        return
+      elsif input == "y"
+        puts "Select the number of the person leaving:"
+        @room.guests.each_with_index do |guest, index|
+          puts "#{index + 1}. #{guest.name}"
+        end
+        input_number = gets.chomp.to_i
+        input_index = input_number - 1
+        guest = @room.guests[input_index]
+        tab = @room.bar.tab.to_f
+        leaving_guests_share = tab / @room.guests.length
+        @room.bar.tab.decrease_tab
+        puts "Thanks for visiting #{guest.name}! Your share of the tab is #{leaving_guests_share}, the remaining tab is #{@room.bar.tab}!"
+        @room.remove_guest(guest)
       else
         puts "Please input 'y' for yes or 'n' for no."
       end
@@ -93,11 +119,12 @@ attr_reader :song_library, :room
       end
       sleep(1)
       check_buy_drinks
+      check_guests_leaving
     end
   end
 
-  def leave
-    final_tab = @room.bar.tab.to_f
+  def all_leave
+    final_tab = @room.bar.tab.round(2)
     each_guest_pays = final_tab / @room.guests.length
     puts "Thanks for visiting, your tab is #{final_tab}, each person pays #{each_guest_pays.round(2)}!"
   end
@@ -111,4 +138,4 @@ karaoke_bar.get_guests
 karaoke_bar.get_songs
 karaoke_bar.check_buy_drinks
 karaoke_bar.go_through_playlist
-karaoke_bar.leave
+karaoke_bar.all_leave

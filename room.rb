@@ -8,7 +8,7 @@ class Room
     @guests = []
     @playlist = []
     @max_capacity = 4
-    @entry_fee = 20
+    @entry_fee = 20.00
     @bar = Bar.new
   end
 
