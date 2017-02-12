@@ -45,10 +45,10 @@ class Room
     found_drink = @bar.drinks.find do |drink|
       drink[:name] == search_name
     end
-    @bar.tab += found_drink[:price]
+    @bar.increase_tab(found_drink[:price])
     if @bar.tab > guest_total_money
       puts "You can't afford that!"
-      @bar.tab -= found_drink[:price]
+      @bar.decrease_tab(found_drink[:price])
     else
       puts "Bought a #{found_drink[:name]} for #{found_drink[:price]}"
     end

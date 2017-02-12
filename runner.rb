@@ -59,9 +59,9 @@ attr_reader :song_library, :room
         guest = @room.guests[input_index]
         tab = @room.bar.tab.to_f
         leaving_guests_share = tab / @room.guests.length
-        @room.bar.tab.decrease_tab
-        puts "Thanks for visiting #{guest.name}! Your share of the tab is #{leaving_guests_share}, the remaining tab is #{@room.bar.tab}!"
-        @room.remove_guest(guest)
+        @room.bar.decrease_tab(leaving_guests_share)
+        puts "Thanks for visiting #{guest.name}! Your share of the tab is #{leaving_guests_share.round(2)}, the remaining tab is #{@room.bar.tab.round(2)}!"
+        @room.remove_guest(guest.name)
       else
         puts "Please input 'y' for yes or 'n' for no."
       end
