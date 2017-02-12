@@ -26,6 +26,8 @@ class Bar
     @tab += amount
   end
 
-  
+  def decrease_tab(amount)
+    @tab -= amount
+  end  
 
 end

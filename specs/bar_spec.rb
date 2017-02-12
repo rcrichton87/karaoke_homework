@@ -16,15 +16,15 @@ class TestBar < MiniTest::Test
     expected = [
       {
         name: "Beer",
-        price: 5
+        price: 5.00
       },
       {
         name: "Wine",
-        price: 15
+        price: 15.00
       },
       {
         name: "Pan-galactic Gargle Blaster",
-        price: 150
+        price: 200.00
       }
     ]
     actual = @bar.drinks
@@ -32,12 +32,20 @@ class TestBar < MiniTest::Test
   end
 
   def test_increase_tab
-    @bar.increase_tab(15)
-    expected = 15
+    @bar.increase_tab(15.00)
+    expected = 15.00
     actual = @bar.tab
     assert_equal(expected, actual)
   end
 
- 
+  def test_decrease_tab
+    @bar.increase_tab(15.00)
+    @bar.decrease_tab(10.00)
+    expected = 5.00
+    actual = @bar.tab
+    assert_equal(expected, actual)
+  end
+
+
 
 end
